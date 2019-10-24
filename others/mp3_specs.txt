@@ -1,0 +1,35 @@
+create own auth module
+	tips:
+	use hashlib module built-in
+	use try:except as control mechanism inside classes
+	class Exceptions bespoke - not really to implement
+
+
+	flow:
+		1.) start w/ auth relevant classes
+		2.) per class, identify the exceptions
+
+	draft:
+		class User:
+
+		class Login_Mgr:
+
+		class Permission_Mgt:
+
+	constraints:
+		password less than 6 characters
+		cannot register if already exists (in username)
+		map users and permissions together
+
+	errors to handle:
+		username already exists
+		password less than 6 characters (invalid password)
+		username does not exist
+		error if di nakalogin
+		error if not authorized in a certain permission
+	
+		tip:
+			Make a specific exception that inherits from Exception
+			then make specific exceptions from this exception (if username needed)
+
+			Get Exception if username not needed
