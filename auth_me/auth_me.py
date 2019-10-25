@@ -174,6 +174,7 @@ class LoginManager:
 
 
 class PermissionManager:
+    """ Stores Permissions in specific Group keys """
     def __init__(self):
         self.permissions = {'MIT': ['dance']}
 
