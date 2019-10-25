@@ -21,12 +21,14 @@ class Menu:
         self._super_options = {1: self._auth.LoginManager.add_user,
                                2: self._auth.GroupManager.add_group,
                                3: self._auth.GroupManager.PermissionManager.add_action,
-                               4: self._auth.LoginManager.del_user,
-                               5: self._auth.GroupManager.del_group,
-                               6: self._auth.GroupManager.PermissionManager.del_action,
-                               7: self._auth.show_super_permissions,
-                               8: self._back,
-                               9: self._close}
+                               4: self._auth.LoginManager.add_membership,
+                               5: self._auth.LoginManager.del_user,
+                               6: self._auth.GroupManager.del_group,
+                               7: self._auth.GroupManager.PermissionManager.del_action,
+                               8: self._auth.LoginManager.del_membership,
+                               9: self._auth.show_super_permissions,
+                               10: self._back,
+                               11: self._close}
 
     def display_options(self):
         options = 'Please select an option number:' \
@@ -58,12 +60,14 @@ class Menu:
                                 '\n1    -   Add User'
                                 '\n2    -   Add Group'
                                 '\n3    -   Add Permission'
-                                '\n4    -   Delete User'
-                                '\n5    -   Delete Group'
-                                '\n6    -   Delete Permission'
-                                '\n7    -   View all Users, Groups and Permissions'
-                                '\n8    -   Back to Main Menu'
-                                '\n9    -   Exit Program\n')
+                                '\n4    -   Add Membership'
+                                '\n5    -   Delete User'
+                                '\n6    -   Delete Group'
+                                '\n7    -   Delete Permission'
+                                '\n8    -   Delete Membership'
+                                '\n9    -   View all Users, Groups and Permissions'
+                                '\n10   -   Back to Main Menu'
+                                '\n11   -   Exit Program\n')
 
         try:
             selected_option = int(selected_option)

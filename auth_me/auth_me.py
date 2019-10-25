@@ -59,6 +59,54 @@ class LoginManager:
 
         return True
 
+    def add_membership(self):
+        """ Adds a valid user to a specific Group key in GroupManager instance """
+        username = self.ask_username()
+        group_name = self.GroupManager.PermissionManager.ask_group()
+
+
+        if not self.GroupManager.PermissionManager.check_group_exist(group_name) \
+                or not self.check_user_exist(username):
+            print(f'User "{username}" does not exist or '
+                  f'Group "{group_name}" does not exist. Please try again.')
+            time.sleep(2)
+            self.add_membership()
+        else:
+            if username in self.GroupManager.groups.get(group_name):
+                print(f'User "{username}" is already in group "{group_name}". Please try again')
+
+            else:
+                self.GroupManager.groups.get(group_name).append(username)
+                time.sleep(2)
+                print(f'Successfully added user "{username}" to group "{group_name}"!')
+                return True
+
+    def del_membership(self):
+        """ Deletes a valid user from a specific Group key in GroupManager instance """
+
+        group_name = self.GroupManager.PermissionManager.ask_group()
+
+        time.sleep(2)
+        if not self.GroupManager.PermissionManager.check_group_exist(group_name):
+            print(f'Group "{group_name}" does not exist. Please try again.')
+            return True
+        users = list(self.GroupManager.groups[group_name])
+
+        print('List of Current Users of group "{1}": {0}'.format(users, group_name))
+
+        username = self.ask_username()
+
+        if username not in users:
+            print(f'User "{username}" is not in group "{group_name}". Please try again.')
+            return True
+
+        self.users.pop(username, None)
+
+        time.sleep(2)
+        print(f'Successfully deleted user "{username}" in group "{group_name}"!')
+
+        return True
+
     def check_valid_user(self, username, password):
         """  Checks if a user-password combination is valid
         Returns an InvalidPassword error if encrypted passwords do not match and
